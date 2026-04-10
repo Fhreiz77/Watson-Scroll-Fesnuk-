@@ -1,0 +1,71 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Social Engineering
+
+Social Engineering didefinisikan sebagai teknik manipulasi psikologis yang memanfaatkan kelemahan kognitif manusia untuk memperoleh informasi sensitif atau hak akses sistem, tanpa memanfaatkan celah teknis yang signifikan. Sebuah studi oleh Citilabs dari Universitas Telkom (2025) menunjukkan bahwa dalam simulasi serangan terhadap rekening bank dan sistem akademik di Indonesia, email phishing menjadi alat serangan utama dengan tingkat keberhasilan hingga 80%, di mana korban dibujuk untuk mengklik tautan berbahaya atau membocorkan data login. Jika dikombinasikan dengan kerentanan Cross-Site Scripting (XSS), nilai CVSS meningkat dari 6,1 menjadi 7,6 (risiko tinggi), yang menunjukkan bahwa efek sinergi ini mempercepat penembusan infrastruktur. Serangan pretexting melalui voice phishing (panggilan telepon penipuan) dan perangkat lunak pemerasan juga tersebar luas; 60% insiden keamanan informasi di seluruh negeri disebabkan oleh manipulasi semacam itu.
+
+Email phishing bekerja berdasarkan siklus “penyalahgunaan kepercayaan”: Pengirim menyamar sebagai pihak yang berwenang (perguruan tinggi/dosen), menciptakan kesan palsu bahwa hal tersebut mendesak (pemberitahuan ujian), dan menyisipkan perangkat lunak berbahaya yang dapat dijalankan secara otomatis. Sebuah analisis dari jurnal ilmiah “Polinema” menunjukkan bahwa 75% mahasiswa tidak dapat mengenali email spear-phishing yang dipersonalisasi berdasarkan data publik dari LinkedIn dan situs web perguruan tinggi. Dampak terpentingnya meliputi session hijacking dan pergerakan lateral ke server internal; di lingkungan perguruan tinggi, waktu rata-rata hingga terdeteksi (MTTC) hanya 14 menit. Salah satu kelemahan dalam implementasi adalah kurangnya pelatihan rutin untuk meningkatkan kesadaran akan masalah keamanan; hanya 35% perguruan tinggi negeri yang melakukan simulasi phishing tahunan.
+
+Beberapa langkah pencegahan yang efektif meliputi pelatihan berbasis gamifikasi untuk meningkatkan literasi keamanan siber, serta penerapan sistem penyaringan email berbasis kecerdasan buatan (AI) dengan tingkat deteksi 92% (telah diuji dan diverifikasi oleh Universitas Telkom). Pedoman BSSN merekomendasikan penggunaan otentikasi dua faktor (2FA) dan prinsip hak akses minimal untuk memutus rantai serangan, namun tingkat penerimaannya di seluruh negeri masih di bawah 40%. Studi ini menunjukkan bahwa di kalangan akademisi Indonesia sangat dibutuhkan model prediksi berbasis pembelajaran mesin yang mengintegrasikan analisis perilaku untuk memungkinkan deteksi secara real-time.
+
+
+https://jurnal.polibatam.ac.id/index.php/JAIC/article/view/9585
+https://jurnal.polinema.ac.id/index.php/jip/article/view/8779
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Cross-Site Scripting (XSS)
+
+Cross-Site-Scripting (XSS) adalah metode serangan yang memanfaatkan masukan pengguna yang tidak diverifikasi untuk menjalankan skrip berbahaya di lingkungan peramban korban, yang dapat mengakibatkan pencurian cookie sesi atau manipulasi DOM. Sebuah tesis dari Fakultas Teknik Universitas Indonesia (2019) telah menemukan serangan XSS yang dipantulkan pada 70% situs web akademik melalui pengujian black-box, dengan muatan sebagai berikut: Sebuah studi kasus dari Universitas Islam Sunan Kalijaga (UIN Sunan Kalijaga) (2025) melaporkan bahwa portal SIAKAD memiliki nilai CVSS 6,1 (risiko sedang). Kerentanan tersebut dieksploitasi menggunakan Burp Suite Intruder, dengan waktu respons 3 detik. Kerentanan ini sering dikombinasikan dengan serangan rekayasa sosial dan disebarkan melalui tautan pendek berbahaya yang dibagikan di grup WhatsApp mahasiswa.
+
+Pada XSS berbasis penyimpanan, muatan kode berbahaya disimpan dalam basis data dan dijalankan secara bersamaan untuk semua pengunjung; sedangkan XSS berbasis DOM memanipulasi skrip sisi klien tanpa meninggalkan jejak di server. Penelitian UI menunjukkan bahwa 45% situs web pengumuman akademik rentan terhadap XSS persisten, yang memungkinkan manipulasi otomatis konten situs web dan perekaman input keyboard secara berkelanjutan. Di lingkungan perguruan tinggi, serangan semacam ini terutama menargetkan forum diskusi dan bagian komentar pada platform pembelajaran daring; pada setiap insiden, data login dari lebih dari 500 akun dicuri. Penyebab utamanya adalah tidak adanya pengkodean keluaran (htmlspecialchars) dan Kebijakan Keamanan Konten (CSP) pada kerangka kerja PHP yang lebih lama.
+
+Beberapa tindakan mitigasi standar OWASP meliputi validasi input, enkripsi output, serta cookie HTTP-only untuk mencegah JavaScript mengakses token sesi. Universitas Sunan Kallijaga merekomendasikan penggunaan OWASP ZAP untuk pemindaian otomatis serta pengaktifan bendera HttpOnly dan Secure. Dalam pengujian setelah penerapan tindakan mitigasi ini, area serangan berkurang sebesar 85%. Terbukti bahwa implementasi CSP Level 2 tanpa skrip CE dapat menangkap 98% muatan XSS modern, meskipun kompatibilitas dengan browser lama di infrastruktur kampus tetap menjadi kendala.
+
+https://lib.ui.ac.id/hasilcari?query=650%3A%22Web+sites--Security+measures%22
+https://digilib.uin-suka.ac.id/id/eprint/74183/
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+SQL Injection
+
+
+Serangan SQL injection memanfaatkan kerentanan dalam validasi input pada aplikasi web untuk menyisipkan perintah SQL berbahaya, yang berpotensi mengakibatkan data basis data diekstraksi, dimanipulasi, atau dihapus. Sebuah penelitian dalam jurnal *Komtika Unimma Journal* (2023) mengklasifikasikan 247 insiden dengan menggabungkan standar NIST SP 800-61R2 dan algoritma clustering K-means, dan menemukan bahwa serangan berbasis “Union” merupakan metode serangan tercepat (hanya memerlukan 3 kali kueri untuk membaca satu tabel). Sebuah tesis dari Universitas Islam Negeri (UIN) Sunan Kalijaga mendokumentasikan serangan injeksi SQL berbasis blind (CVSS 8.2, risiko tinggi) yang terjadi pada sistem SIAKAD kampus tersebut. Serangan ini memanfaatkan skrip yang dimodifikasi melalui SQLMap, dengan teknik berbasis waktu (SLEEP(5)) dan boolean (AND 1=1--). Jurnal SMATIKA Ubhinus (2024) memvalidasi pengujian penetrasi dan mengidentifikasi 92% kerentanan dalam aplikasi PHP+MySQL sebelum implementasi.
+
+Serangan blind injection adalah jenis serangan yang paling sulit dideteksi, karena tidak langsung mengembalikan data, melainkan inferensi dari waktu respons atau kondisi boolean. Penelitian menunjukkan bahwa terdapat celah keamanan dalam basis data akademis yang disebabkan oleh penggunaan string concatenation pada formulir login dan pencarian ($query = „SELECT * FROM users WHERE id = ‚$id‘“;). . Dampak terpentingnya meliputi kebocoran data (15.000 catatan mahasiswa), perluasan izin hingga tingkat DBA, serta eksekusi kode jarak jauh melalui LOAD_FILE() di MySQL <8.0. Di universitas negeri, tingginya frekuensi kerentanan semacam ini disebabkan oleh kode lama dari era PHP 5.x, di mana ORM tidak digunakan.
+
+Prepared statements dengan parameter binding (PDO::prepare()) dan stored procedure terbukti telah memitigasi 95% vektor serangan dengan mengubah masukan menjadi nilai literal, bukan kode yang dapat dieksekusi. Unimma merekomendasikan Web Application Firewall (WAF) berbasis ekspresi reguler untuk deteksi tambahan terhadap tanda tangan SQLi dengan tingkat false positive sebesar 3,2%. Ada celah penelitian terkait kurangnya validasi masukan berbasis pembelajaran mesin yang kontekstual untuk mendeteksi teknik penyamaran seperti Comment Injection dan Encoding Bypass.
+
+https://journal.unimma.ac.id/index.php/komtika/article/view/10527
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Denial of Service (DoS) dan Distributed Denial of Service (DDoS)
+
+
+Serangan DoS/DDoS mengganggu ketersediaan layanan dengan membanjiri infrastruktur target menggunakan arus data jaringan yang melebihi batas kapasitasnya, yang mengakibatkan kegagalan sistem dan gangguan operasional. “Jurnal Universitas Negeri Medan” (2022) mengembangkan model jaringan saraf tiruan untuk deteksi dengan propagasi mundur, yang menunjukkan mean squared error (MSE) sebesar 0,0585 (3×4 neuron pada lapisan tersembunyi, fungsi aktivasi ReLU) dan mencapai akurasi 94,7% pada dataset SYN Flood dan UDP Flood. “Proceedings of the Conference of Universitas Islam Yogyakarta” menganalisis serangan DoS terhadap SIMPTT dengan bantuan Sistem Deteksi Intrusi (IDS) Snort menggunakan peringatan tanda tangan: tcp any any -> $HTTP_SERVERS 80 (msg: “SYN Flood”; flags: S, 12; threshold: type both, track by_dst, count 100, seconds 10;). Serangan DDoS berbasis lalu lintas melalui botnet IoT mendominasi di Indonesia; pada paruh pertama tahun 2025, tercatat total 133,4 juta serangan.
+
+Serangan SYN-Flood menghabiskan tabel koneksi server melalui proses TCP handshake yang setengah terbuka, sementara Slowloris menghabiskan kumpulan proses Apache dengan mempertahankan koneksi yang berlangsung lama. Penelitian Unimed menunjukkan bahwa serangan amplifikasi DNS (serangan refleksi) dengan bantuan botnet yang terdiri dari 10.000 router rumah tangga di Indonesia dapat mencapai bandwidth hingga 100 Gbit/s. Dampak terhadap perguruan tinggi antara lain pembatalan ujian daring (dengan kerugian harian sebesar 2 miliar rupiah) serta gangguan akses ke portal penelitian nasional. Penyebabnya: bandwidth server kampus berada di bawah 1 Gbit/s, dan tidak ada CDN atau pusat pembersihan.
+
+Langkah-langkah pertahanan berlapis tersebut meliputi SYN-Cookies, pembatasan laju IP (iptables -A INPUT -p tcp --syn -m limit --limit 25/s --limit-burst 50 -j ACCEPT), serta rute BGP Anycast. Model jaringan saraf Unimed menggabungkan data NetFlow dengan perhitungan entropi fitur untuk mendeteksi serangan zero-day. BSSN merekomendasikan agar CSIRT kampus dilengkapi dengan kapasitas penyaringan 10 Gbit/s dan melakukan penyaringan hulu bekerja sama dengan APJII.
+
+https://jurnal.unimed.ac.id/2012/index.php/cess/article/view/27090
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Man-in-the-Middle (MitM)
+
+Serangan Man-in-the-Middle adalah tindakan menyadap komunikasi antara dua pihak yang sah untuk mencuri, memanipulasi, atau menyisipkan data tanpa sepengetahuan perangkat pengguna. Sebuah studi dari Universitas Islam Negeri Sunan Kalijaga (UIN Sunan Kalijaga) mengaitkan serangan Man-in-the-Middle dengan penelusuran direktori (CVSS 6.5) dalam Internet of Things (IoT) akademis, di mana penyerang menelusuri direktori /admin/, /backup/, dan /db/ pada pengontrol ruang kelas pintar. Di lingkungan Wi-Fi kampus publik yang tidak mengaktifkan WPA3, serangan ARP-Spoofing (arpspoof -i wlan0 -t 192.168.1.1 192.168.1.100) dan DNS-Poisoning sangat umum terjadi. Melalui SSL-Stripping, HTTPS diturunkan menjadi HTTP, sehingga penyerang dapat mencuri data login dari portal Single-Sign-On (SSO) universitas.
+
+Vektor serangan utama adalah titik akses “man-in-the-middle” di jaringan Wi-Fi EDOROAM kampus, yang pada jam-jam sibuk dapat mencatat lebih dari 300 data login per jam. Penelitian menunjukkan bahwa 65% perangkat cerdas di laboratorium (kamera pengawas, sensor lingkungan) masih menggunakan kredensial standar dan transmisi teks biasa HTTP. Dampak sistemiknya meliputi manipulasi data dalam sistem pencatatan waktu berbasis IoT serta pergerakan lateral menuju pengontrol domain Active Directory. Faktor risiko: Pelanggaran Certificate Pinning dan pra-pemuatan HSTS dalam aplikasi seluler kampus.
+
+Langkah-langkah perlindungan komprehensif tersebut mencakup penggunaan HTTPS dengan dukungan HSTS, pengikatan sertifikat untuk aplikasi seluler, serta VPN yang selalu aktif untuk akses jarak jauh. Sesuai dengan pedoman NIST SP 800-207, area serangan dapat dikurangi sebesar 87% melalui penerapan akses jaringan Zero-Trust (ZTNA) dengan otentikasi berkelanjutan. BSSN merekomendasikan penggunaan WPA3-Enterprise bersama dengan server RADIUS mandiri dan segmentasi jaringan untuk mewujudkan VLAN IoT yang terisolasi.
+
+https://digilib.uin-suka.ac.id/id/eprint/74183/
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
