@@ -1,0 +1,2 @@
+https://www.blackduck.com/glossary/what-is-sql-injection.html
+
