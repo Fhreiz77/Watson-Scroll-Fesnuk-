@@ -1,0 +1,47 @@
+XSS real world case 
+
+Pada tahun 2019, seorang peneliti PerimeterX yang bernama Gal Weizman menemukan sebuah kerentanan tingkat tinggi pada WhatsApp. kasus ini bisa dengan kode CVE-2019-18426 yang spesifik nya pada serangan WhatsApp Web.
+
+Weizman sendiri mengungkapkan bahwa, WhatsApp Web menjadi rentan terhadap celah pada Open-Redirect yang bisa memicu serangan cross-site scripting (XSS) secara terus-menerus.
+
+serangan tersebut bisa dipicu dengan mengirimkan pesan yang "dirancang khusus" kepada target.
+
+
+jika target kurang waspada membuka pesan yang "dirancang khusus" tersebut pada browser, maka attacker bisa menjalankan "arbitrary code" dalam konteks domain whatsapp web. Namun, jika menggunakan desktop application maka attacker bisa menjalankan "malicious code" pada sistem si target jika konteks nya si target punya komputer yang rentan dan lemah security nya.
+
+Selain itu, content security policy (CSP) yang salah konfigurasi pada WhatsApp web domain juga dapat memungkinkan si peneliti untuk memuat payloads XSS dengan panjang berapapun dengan memakai iframe dari website terpisah yang dikontrol oleh attacker.
+
+Weizman mengatakan, jika saya CSP nya dikonfigurasi dengan benar maka dampak serangan XSS ini pasti jauh lebih kecil karena lewat konfigurasi CSP lah yang memungkinkan si attacker mencuri informasi berharga dari target.
+
+Disamping itu, celah pada open-redirect juga bisa dimanfaatkan untuk memanipulasi URL seraya dengan preview domain yang ditampilkan untuk membujuk si target agar terjebak ke dalam serangan phising.
+
+
+SQL Injection ("GhostShell SQL Injection Attack")
+
+Pada juli 2012, sebuah group hacker yang dipanggil "GhostShell" melancarkan serangan yang menargetkan berbagai agensi pemerintahan, universitas dan agensi-agensi terkenal seperti NASA, European Space Agency, The Fed (The Federal Reserve).
+
+Serangan dari GhostShell menggunakan SQL Injection yang mana SQL Injection ini memanfaatkan kerentanan pada Web App yang tidak memvalidasi user input dengan baik.
+
+Para penyerang ini menggunakan sebuah tool yang disebut "Havij" untuk melakukan scan website yang rentan terhadap serangan pada Database SQL. Havij memang sebuah tools yang sering digunakan oleh para hacker untuk mengotomasi serangan SQL Injection. Apabila tools nya mengidentifikasi adanya kerentanan terhadap website, maka ia akan berusaha untuk "inject" atau menyisipkan SQL Statement yang berbahaya ke dalam input field pada web app.
+
+Para penyerang pada akhirnya berhasil melakukan extract sensitive data, seperti usernames, passwords, email addresses dari database yang diretas.
+
+The GhostShell attack mempunyai impact yang signifikan terhadap organisasi yang ditargetkan, banyak konsenkuensi dari sisi para user dan organisasi yang mana serangan ini dapat dimanfaatkan untuk mendapatkan akses tanpa izin ke sistem dan jaringan diluar lingkup database. Hal ini menyoroti bahwa pentingnya bagi organisasi untuk memastikan bahwa web app mereka telah diamankan dan diverifikasi dengan baik dengan validasi input untuk dapat mengakses query berparameter demi mencegah SQL Injection attack.
+
+Audit Security dan Pen test lah yang dapat membantu untuk mengidentifikasi keamanan untuk menangani dan mencegah sebelum celah tersebut dapat dimanfaatkan oleh si penyerang.
+
+Tamat 🥵🩻☠️
+
+
+
+DDoS (Github) 
+
+Pada Februari 2018, platform pengembangan perangkat lunak GitHub mengalami salah satu serangan Distributed Denial of Service (DDoS) terbesar yang pernah tercatat pada saat itu. Serangan ini mencapai puncak lalu lintas sebesar sekitar 1.35 Terabits-per-second (Tbps) dan memanfaatkan teknik Memcached Amplification. Teknik ini mengeksploitasi server memcached yang salah konfigurasi dan dapat diakses secara publik melalui protokol UDP. Penyerang mengirimkan permintaan kecil dengan alamat IP yang dipalsukan (IP spoofing), sehingga server memcached tersebut mengirimkan respons berukuran jauh lebih besar ke target, dalam hal ini GitHub. Rasio amplifikasi dari teknik ini dapat mencapai puluhan ribu kali lipat dari ukuran permintaan awal, yang mengakibatkan lonjakan trafik secara masif dan menyebabkan gangguan layanan pada situs GitHub selama beberapa menit. Untuk mengatasi serangan tersebut, GitHub bekerja sama dengan Akamai melalui layanan Prolexic guna melakukan traffic scrubbing dan mitigasi serangan secara cepat, sehingga layanan dapat dipulihkan dalam waktu relatif singkat. Kasus ini menyoroti pentingnya konfigurasi keamanan yang tepat pada layanan jaringan serta perlunya penerapan mekanisme mitigasi seperti rate limiting, network filtering, dan penggunaan infrastruktur distribusi untuk meningkatkan ketahanan terhadap serangan DDoS berskala besar.
+
+
+Akamai Technologies. (2018). Akamai mitigates record 1.3 Tbps DDoS attack against GitHub. Retrieved from https://www.akamai.com/blog/security/ddos-attack-github-memcached
+Cloudflare, Inc. (2018). Memcrashed: Major amplification attacks from UDP port 11211. Retrieved from https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211/
+US-CERT. (2018). Alert (TA18-004A): Memcached Distributed Denial of Service Reflective Amplification. Cybersecurity and Infrastructure Security Agency. Retrieved from https://www.cisa.gov/news-events/alerts/2018/02/27/memcached-distributed-denial-service-reflective-amplification
+Khandelwal, S. (2018). GitHub survives record-breaking 1.35 Tbps DDoS attack. The Hacker News. Retrieved from https://thehackernews.com/2018/03/memcached-ddos-attack.html
+https://thehackernews.com/2020/02/hack-whatsapp-web.html
+https://lmntrix.com/blog/zero-day-exploits-special-edition-lessons-learned-from-the-ghostshell-sql-injection-attack/
