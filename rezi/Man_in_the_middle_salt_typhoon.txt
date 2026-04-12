@@ -1,3 +1,5 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 Man-in-the-Middle (MitM)
 
@@ -27,8 +29,16 @@ Penerapan enkripsi ujung-ke-ujung melalui protokol TLS 1.3 dan VPN yang andal me
 Penerapan enkripsi ujung-ke-ujung melalui protokol TLS 1.3 dan VPN yang andal menjadi benteng utama melawan MITM Salt Typhoon, karena menghalangi dekripsi data walaupun lalu lintas berhasil dicegat. Tambahan verifikasi sertifikat digital dan arsitektur zero-trust efektif mencegah pemalsuan identitas yang menjadi andalan kelompok ini.
 
 https://digilib.uin-suka.ac.id/id/eprint/74183/
+https://www.forbes.com/sites/emilsayegh/2025/08/30/us-and-allies-declare-salt-typhoon-hack-a-national-defense-crisis/
+https://csirt.or.id/berita/serangan-siber-telekomunikasi-eropa
+https://www.extrahop.com/blog/anatomy-of-an-attack-line-cisa-alert-on-salt-typhoon
+https://en.wikipedia.org/wiki/2024_global_telecommunications_hack
+https://en.wikipedia.org/wiki/2024_global_telecommunications_hack
+https://csirt.semarangkota.go.id/blog/Salt-Typhoon-Berhasil-Memperoleh-Akses-ke-Jaringan-Tentara-Amerika-Serikat
+https://en.wikipedia.org/wiki/Salt_Typhoon
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 
