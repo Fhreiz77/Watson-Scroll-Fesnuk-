@@ -1,0 +1,47 @@
+ 
+Jenis Serangan CSRF
+Berdasarkan media pendistribusiannya serangan CSRF terbagi menjadi dua,  yaitu stored dan reflected. Berikut ini penjelasannya:
+
+1. Stored
+Jenis Cross Site Request Forgery yang pertama ada stored. Jenis ini menggunakan aplikasi website sebagai sarana untuk mendistribusikan exploit URL. Serangan storage kemungkinan berhasil karena ketika pengguna masuk ke situs dan posisinya dianggap sebagai authentic user.
+
+Jadi ketika pengguna mengirimkan permintaan, website akan menganggap itu adalah permintaan sah dari pengguna, meskipun pengguna hanya mengklik URL secara tidak sengaja dan tidak tahu apakah itu URL eksploitasi atau bukan. Kekurangan dari tipe ini adalah meninggalkan jejak dan riwayat yang jelas. Jadi Anda bisa mengetahui lebih lanjut mengenai hal ini pada website yang Anda gunakan.
+
+2. Reflected
+Jenis CSRF berikutnya yaitu reflected, ada perbedaan antara tipe pertama yang menggunakan media website untuk distribusinya, dan tipe kedua yang menggunakan sistem di luar website, seperti email, kolom komentar blog, dan massage board.
+
+
+Kasus : Facebook CSRF – Account Takeover (2019)
+
+Latar belakang & cara kerja:
+Seorang peneliti keamanan dengan alias "Samm0uda" menemukan kerentanan CSRF kritis di Facebook yang bisa dieksploitasi untuk membajak akun hanya dengan membuat pengguna mengklik sebuah tautan. SecurityWeek
+
+Inti masalahnya ada pada sebuah endpoint yang rentan: facebook.com/comet/dialog_DONOTUSE/?url=XXXX. Peneliti berhasil mem-bypass proteksi CSRF yang ada dengan cara menyisipkan token CSRF Facebook (fb_dtsg) ke dalam body POST request. Sophos
+Dampak yang berpotensi terjadi:
+Serangan ini bisa digunakan untuk memposting sesuatu di timeline pengguna, menghapus foto profil, bahkan mengambil alih akun dengan cara mengubah alamat email atau nomor telepon yang terdaftar. Untuk pengambilalihan akun penuh, penyerang bisa melakukannya dua tahap — pertama mengganti email/nomor telepon, lalu mengkonfirmasi perubahan tersebut. Security Affairs
+
+Dampak yang berpotensi terjadi:
+Serangan ini bisa digunakan untuk memposting sesuatu di timeline pengguna, menghapus foto profil, bahkan mengambil alih akun dengan cara mengubah alamat email atau nomor telepon yang terdaftar. Untuk pengambilalihan akun penuh, penyerang bisa melakukannya dua tahap — pertama mengganti email/nomor telepon, lalu mengkonfirmasi perubahan tersebut. Security Affairs
+
+
+Skala ancaman:
+URL yang digunakan dalam serangan ini bersifat generik sehingga bisa dikirimkan ke jutaan pengguna sekaligus. Selain itu, URL-nya berada di domain www.facebook.com sendiri, sehingga sangat mudah mengelabui korban agar percaya bahwa tautan tersebut sah dan aman. Acunetix
+
+Respons & penyelesaian:
+Timeline penanganannya: laporan dikirim 26 Januari 2019, diakui Facebook di hari yang sama, diperbaiki 31 Januari 2019, dan bounty sebesar $25.000 diberikan pada 12 Februari 2019. Security Affairs
+
+
+Daftar Referensi
+
+Birsan, A. (2020, August 22). *The bug that exposed your PayPal password*. Medium. https://medium.com/@alex.birsan/the-bug-that-exposed-your-paypal-password-539fc2896da9
+
+Courtial, F. (2016). *CSRF vulnerability in PayPal.me* [Bug report]. HackerOne.
+
+Kovacs, E. (2019, February 15). *CSRF vulnerability in Facebook earns researcher $25,000*. SecurityWeek. https://www.securityweek.com/csrf-vulnerability-facebook-earns-researcher-25000/
+
+Nidecki, T. A. (2019, February 25). *Critical CSRF vulnerability on Facebook*. Acunetix. https://www.acunetix.com/blog/web-security-zone/critical-csrf-vulnerability-facebook/
+
+Sammouda, Y. (2019, February). *Facebook CSRF protection bypass which leads to account takeover* [Bug bounty write-up]. https://samm0uda.github.io
+
+Schwartz, M. J. (2016, July 22). *PayPal fixes CSRF vulnerability in PayPal.me*. Threatpost. https://threatpost.com/paypal-fixes-csrf-vulnerability-in-paypal-me/119435/
+
